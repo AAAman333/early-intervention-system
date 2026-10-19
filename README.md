@@ -1,6 +1,6 @@
 # Development of a Digital System for Managing Early Intervention Programs
 
-Diploma project, Astana IT University, School of Software Engineering.
+Diploma project, Astana IT University, School of Software Engineering
 
 A web-based information system that helps early intervention centres plan, schedule and track individual intervention programs for children: program goals, session types and intensity, calendar, attendance, execution history and reports.
 
