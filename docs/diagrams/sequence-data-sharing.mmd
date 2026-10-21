@@ -1,0 +1,25 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Arial','fontSize':'14px'}}}%%
+sequenceDiagram
+    autonumber
+    actor P as  Parent
+    participant S as System
+    actor Sp as  Specialist
+
+    P->>S: Create child profile
+    P->>S: Search specialist by specialisation
+    S-->>P: List of verified specialists
+    P->>S: Send request + share child profile
+    S->>Sp: New request with child's data
+    alt Specialist accepts
+        Sp->>S: Accept
+        S-->>P: Request accepted
+        Sp->>S: Create plan and schedule sessions
+        S-->>P: Plan and calendar visible
+        Sp->>S: Mark session held + comment
+        S-->>P: History and recommendations
+    else Specialist rejects
+        Sp->>S: Reject
+        S-->>P: Request rejected, no access given
+    end
+    P->>S: Revoke access (any time)
+    S-->>Sp: Child no longer visible
