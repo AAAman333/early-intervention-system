@@ -1,7 +1,5 @@
 # Development of a Digital System for Managing Early Intervention Programs
 
-Diploma project, Astana IT University, School of Software Engineering
-
 A web-based information system that helps early intervention centres plan, schedule and track individual intervention programs for children: program goals, session types and intensity, calendar, attendance, execution history and reports.
 
 ## Problem statement
@@ -10,10 +8,9 @@ Early intervention programs are planned individually for each child: goals, type
 
 ## Target users
 
-- **Early intervention specialists** (psychologists, speech therapists, physical therapists, etc.) — create and run individual programs, record sessions and attendance.
-- **Administrators of early intervention centres** — manage specialists, the program catalog and schedules, view reports.
-
-The prototype uses demonstration data only. Real personal data of children is not collected or stored.
+- **Parents** — create and own the child's profile, connect to specialists and share data with them, follow the plan, schedule and progress.
+- **Early intervention specialists** (psychologists, speech therapists, physical therapists, etc.) — create individual plans, schedule sessions, record attendance and comments.
+- **Administrators** — verify specialists, manage the catalog of session types, monitor the system.
 
 ## Aim and expected outcomes
 
@@ -21,14 +18,15 @@ The prototype uses demonstration data only. Real personal data of children is no
 
 **Expected outcomes:**
 - a working web prototype with role-based access;
-- verifiable scenarios: creating a program → assigning sessions → recording execution → generating a report;
+- verifiable scenarios: parent shares child profile → specialist creates a plan and schedules sessions → attendance and comments are recorded → parent sees progress and the report;
 - project documentation (requirements, architecture, test plan) and demonstration data.
 
 ## Project scope
 
 **In scope:**
-- user roles and access rights (specialist, administrator);
-- catalog of programs and session types;
+- three roles: parent, specialist, administrator;
+- child profiles owned by parents and consent-based data sharing with specialists;
+- catalog of session types;
 - individual intervention plans;
 - calendar scheduling of sessions;
 - attendance tracking and execution history;
@@ -38,8 +36,8 @@ The prototype uses demonstration data only. Real personal data of children is no
 **Out of scope:**
 - processing of real personal or medical data of children;
 - integration with state medical information systems;
-- billing and payments;
-- native mobile applications.
+- native mobile applications (the web interface is responsive);
+- online payments and video sessions.
 
 ## Team and supervisor
 
@@ -65,9 +63,6 @@ The final technology stack will be selected based on the technology comparison (
 ## Links
 
 - **YouTrack project:** https://moldir-diploma.youtrack.cloud/projects/DIP
-- **Documentation:** [`docs/`](docs/)
-- **Diagrams:** [`diagrams/`](diagrams/)
-- **Prototype:** [`prototype/`](prototype/)
 
 ## Repository structure
 
