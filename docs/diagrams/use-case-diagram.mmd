@@ -1,0 +1,49 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Arial','fontSize':'14px','lineColor':'#94a3b8'}}}%%
+flowchart LR
+    Parent([" Parent"]):::actor
+    Admin([" Administrator"]):::actor
+
+    subgraph SYS["Early Intervention Management System"]
+        direction TB
+        subgraph PO["Parent"]
+            direction TB
+            UC3(["Create child profile"]):::uc
+            UC4(["Find specialist &<br/>send request"]):::uc
+            UC6(["Revoke access"]):::uc
+        end
+        subgraph SH["Shared"]
+            direction TB
+            UC1(["Register / log in"]):::uc
+            UC11(["View calendar &<br/>history"]):::uc
+            UC12(["View execution<br/>report"]):::uc
+        end
+        subgraph SO["Specialist"]
+            direction TB
+            UC5(["Accept / reject<br/>request"]):::uc
+            UC7(["Create individual plan"]):::uc
+            UC8(["Schedule / reschedule<br/>session"]):::uc
+            UC9(["Record attendance<br/>& comments"]):::uc
+            UC10(["Track goal progress"]):::uc
+        end
+        subgraph AO["Administrator"]
+            direction TB
+            UC2(["Verify specialist"]):::uc
+            UC13(["Manage catalog &<br/>view statistics"]):::uc
+        end
+    end
+
+    Spec([" Specialist"]):::actor
+
+    Parent --- UC3 & UC4 & UC6
+    Parent --- UC1 & UC11 & UC12
+    Admin --- UC2 & UC13
+    UC1 & UC11 & UC12 --- Spec
+    UC5 & UC7 & UC8 & UC9 & UC10 --- Spec
+
+    classDef actor fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0c4a6e
+    classDef uc fill:#ffffff,stroke:#6366f1,stroke-width:1.5px,color:#1e1b4b
+    style SYS fill:#f8fafc,stroke:#4f46e5,stroke-width:2px
+    style PO fill:#ecfdf5,stroke:#a7f3d0
+    style SH fill:#eef2ff,stroke:#c7d2fe
+    style SO fill:#fff7ed,stroke:#fed7aa
+    style AO fill:#fdf2f8,stroke:#fbcfe8

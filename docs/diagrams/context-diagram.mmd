@@ -1,0 +1,18 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Arial','fontSize':'15px','lineColor':'#64748b'}}}%%
+flowchart LR
+    Parent[" Parent<br/><small>creates child profile,<br/>shares data, follows progress</small>"]:::actor
+    Spec[" Specialist<br/><small>plans, schedules,<br/>records sessions</small>"]:::actor
+    Admin[" Administrator<br/><small>verifies specialists,<br/>manages catalog</small>"]:::actor
+
+    Sys["<b>Early Intervention<br/>Management System</b><br/><small>web application</small>"]:::system
+
+    Mail["✉️ Email service<br/><small>optional</small>"]:::external
+
+    Parent <-->|"child profile, requests,<br/>schedule, history, comments"| Sys
+    Spec <-->|"plans, sessions,<br/>attendance, reports"| Sys
+    Admin <-->|"verification, catalog,<br/>statistics"| Sys
+    Sys -.->|"reminders"| Mail
+
+    classDef actor fill:#e0f2fe,stroke:#0284c7,stroke-width:2px,color:#0c4a6e
+    classDef system fill:#4f46e5,stroke:#312e81,stroke-width:3px,color:#ffffff
+    classDef external fill:#f1f5f9,stroke:#94a3b8,stroke-dasharray:5 5,color:#475569
