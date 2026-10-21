@@ -1,0 +1,41 @@
+%%{init: {'theme':'base','themeVariables':{'fontFamily':'Arial','fontSize':'14px','lineColor':'#64748b'}}}%%
+flowchart TB
+    subgraph CLIENT[" Web client (browser, responsive)"]
+        P_UI["Parent pages<br/><small>child profile, requests,<br/>calendar, history</small>"]:::ui
+        S_UI["Specialist pages<br/><small>children, plans,<br/>calendar, attendance</small>"]:::ui
+        A_UI["Admin pages<br/><small>verification, catalog,<br/>statistics</small>"]:::ui
+    end
+
+    GW[" REST API · HTTPS / JSON<br/><small>authentication & role check on every request</small>"]:::gateway
+
+    subgraph SERVER["⚙️ Backend modules"]
+        M1["Users & Auth"]:::mod
+        M2["Children"]:::mod
+        M3["Access & Consent<br/><small>requests, sharing, revoke</small>"]:::key
+        M4["Plans & Catalog"]:::mod
+        M5["Scheduling<br/><small>recurrence, conflicts</small>"]:::mod
+        M6["Attendance &<br/>Progress"]:::mod
+        M7["Reports"]:::mod
+        M8["Notifications<br/><small>optional</small>"]:::opt
+    end
+
+    DB[(" Relational database")]:::db
+    MAIL[" Email service<br/><small>optional</small>"]:::opt
+
+    P_UI & S_UI & A_UI --> GW
+    GW --> M1 & M2 & M3 & M4
+    M1 ~~~ M5
+    M2 ~~~ M6
+    M3 ~~~ M7
+    M4 ~~~ M8
+    M5 & M6 & M7 --> DB
+    M8 -.-> MAIL
+
+    classDef ui fill:#e0f2fe,stroke:#0284c7,color:#0c4a6e
+    classDef gateway fill:#4f46e5,stroke:#312e81,color:#ffffff
+    classDef mod fill:#ffffff,stroke:#6366f1,color:#1e1b4b
+    classDef key fill:#dcfce7,stroke:#16a34a,stroke-width:2px,color:#14532d
+    classDef opt fill:#f1f5f9,stroke:#94a3b8,stroke-dasharray:5 5,color:#475569
+    classDef db fill:#fef3c7,stroke:#d97706,color:#78350f
+    style CLIENT fill:#f8fafc,stroke:#0284c7
+    style SERVER fill:#f8fafc,stroke:#6366f1
