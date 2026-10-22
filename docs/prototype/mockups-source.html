@@ -1,0 +1,270 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<style>
+:root{--ink:#21414B;--pri:#3A8F8D;--teal:#7FBFBE;--body:#3C5259;--muted:#7A8C91;--bg:#EEF6F6;--surf:#fff;--line:#DCE9E9;--soft:#EBF5F5;--grow:#2F7F7C;--growbg:#E0F1F0;--amber:#C9566E;--amberbg:#FBE8EC;--red:#5E6E80;--redbg:#E6EBF2;--blush:#F6EDED;--peri:#CBD7E8;}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Noto Sans CJK JP","Noto Sans",sans-serif;color:var(--body);background:#DCE7EA;padding:30px;display:flex;flex-wrap:wrap;gap:30px}
+.phone{width:390px;height:844px;background:var(--bg);border-radius:22px;overflow:hidden;position:relative;display:flex;flex-direction:column;border:1px solid #BCD0D2}
+.status{height:44px;display:flex;justify-content:space-between;align-items:center;padding:0 24px;font-size:14px;font-weight:600;color:var(--ink)}
+.top{padding:6px 20px 14px;display:flex;align-items:center;gap:12px}
+.top h1{font-size:22px;color:var(--ink);font-weight:700;letter-spacing:-.2px}
+.back{font-size:22px;color:var(--ink);width:24px}
+.content{flex:1;padding:0 16px;overflow:hidden;display:flex;flex-direction:column;gap:12px}
+.card{background:var(--surf);border-radius:6px;padding:16px;border:1px solid var(--line)}
+.child{display:flex;gap:14px;align-items:center;background:linear-gradient(120deg,#3A8F8D,#7FBFBE);color:#fff;border:none}
+.avatar{width:54px;height:54px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:700;color:var(--ink)}
+.child small{color:#E8F6F5;font-size:13px}
+.child b{font-size:19px;display:block}
+.h{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:6px}
+.t{font-size:14px;line-height:1.45}
+.m{font-size:13px;color:var(--muted)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.btn{background:var(--pri);color:#fff;border-radius:6px;padding:14px;text-align:center;font-weight:700;font-size:15px}
+.btn2{border:1.5px solid var(--pri);color:var(--pri);border-radius:6px;padding:12px;text-align:center;font-weight:600;font-size:15px;background:#fff}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:4px 10px;border-radius:4px}
+.ok{background:var(--growbg);color:var(--grow)}.warn{background:var(--amberbg);color:var(--amber)}.bad{background:var(--redbg);color:var(--red)}.info{background:#E4EBF5;color:#45608A}
+.nav{height:76px;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;align-items:center;padding-bottom:10px}
+.nav div{font-size:11px;color:var(--muted);text-align:center}
+.nav div i{display:block;width:22px;height:22px;border-radius:3px;background:#CFE0E0;margin:0 auto 4px}
+.nav .on{color:var(--pri);font-weight:700}.nav .on i{background:var(--pri)}
+.track{display:flex;gap:4px;margin-top:8px}.track span{flex:1;height:8px;border-radius:1px;background:#D6E4E4}
+.track .g{background:var(--pri)}.track .a{background:#E5738A}
+.opt{background:#fff;border:1.5px solid var(--line);border-radius:6px;padding:16px;font-size:16px;font-weight:600;color:var(--ink)}
+.opt.sel{border-color:var(--pri);background:var(--soft)}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{font-size:13px;padding:7px 12px;border-radius:4px;background:#fff;border:1px solid var(--line);color:var(--ink);font-weight:600}.chip.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.star{color:#C9566E;font-weight:700}
+.slot{border:1.5px solid var(--line);border-radius:4px;padding:8px 10px;font-size:13px;font-weight:600;color:var(--ink);text-align:center;background:#fff}
+.slot.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.check{display:flex;gap:10px;align-items:flex-start}.box{width:22px;height:22px;border-radius:3px;background:var(--pri);flex-shrink:0;color:#fff;font-size:14px;text-align:center;line-height:22px}
+.tl{border-left:3px solid var(--line);padding-left:14px;margin-left:6px;display:flex;flex-direction:column;gap:12px}
+.rec{background:var(--blush);border-left:3px solid #E5738A;border-radius:4px;padding:10px 12px;font-size:13px;line-height:1.45;color:#7A3445;margin-top:8px}
+/* desktop */
+.desk{width:1280px;height:800px;background:var(--bg);border-radius:6px;overflow:hidden;display:flex;border:1px solid #BCD0D2;position:relative}
+.side{width:230px;background:var(--ink);color:#BFD6D8;padding:24px 16px;display:flex;flex-direction:column;gap:6px}
+.side .logo{color:#fff;font-weight:700;font-size:17px;margin-bottom:22px;line-height:1.3}
+.side div.i{padding:10px 12px;border-radius:4px;font-size:14px;display:flex;justify-content:space-between}
+.side div.i.on{background:#3A8F8D;color:#fff;font-weight:700}
+.side .badge{background:#E5738A;color:#fff;border-radius:4px;padding:0 8px;font-size:12px;font-weight:700}
+.side .me{margin-top:auto;font-size:13px;color:#9DBCBF;border-top:1px solid #34606B;padding-top:14px}
+.main{flex:1;padding:28px 32px;display:flex;flex-direction:column;gap:16px;overflow:hidden}
+.main h1{font-size:24px;color:var(--ink)}
+.grid2{display:grid;grid-template-columns:1.25fr 1fr;gap:16px}
+table{width:100%;border-collapse:collapse;font-size:14px}td,th{padding:10px 8px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--muted);font-weight:600;font-size:13px}
+.goal{display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}
+.cal{display:grid;grid-template-columns:60px repeat(5,1fr);font-size:13px;background:#fff;border-radius:6px;border:1px solid var(--line);overflow:hidden}
+.cal div{border-right:1px solid var(--line);border-bottom:1px solid var(--line);height:58px;padding:4px 6px;position:relative}
+.cal .hd{height:44px;font-weight:700;color:var(--ink);display:flex;align-items:center;justify-content:center}
+.cal .tm{color:var(--muted);font-size:12px}
+.ev{position:absolute;inset:4px;border-radius:3px;padding:5px 8px;font-size:12px;line-height:1.3;font-weight:600}
+.ev.d{background:var(--growbg);color:#22605E;border-left:4px solid var(--grow)}
+.ev.p{background:#E4EBF5;color:#45608A;border-left:4px solid #8FA6CC}
+.ev.x{background:var(--redbg);color:var(--red);border-left:4px solid var(--red)}
+.modal{position:absolute;right:32px;top:120px;width:380px;background:#fff;border-radius:6px;box-shadow:0 18px 50px rgba(33,65,75,.2);padding:22px;display:flex;flex-direction:column;gap:12px;border:1px solid var(--line)}
+.seg{display:flex;gap:6px}.seg div{flex:1;text-align:center;padding:9px;border-radius:4px;border:1.5px solid var(--line);font-size:13px;font-weight:600;color:var(--ink)}.seg .on{background:var(--grow);color:#fff;border-color:var(--grow)}
+.ta{border:1.5px solid var(--line);border-radius:4px;padding:10px;font-size:13px;line-height:1.45;color:var(--body);min-height:62px}
+.big{font-size:40px;font-weight:700;color:var(--ink)}
+.bar{height:14px;border-radius:2px;background:#D6E4E4;overflow:hidden}.bar i{display:block;height:100%;background:var(--pri)}
+</style></head><body>
+
+<!-- M1 Home -->
+<div class="phone" id="m1-home"><div class="status"><span>9:41</span><span>LTE 100%</span></div>
+<div class="top"><h1>Хадиша</h1></div>
+<div class="content">
+ <div class="card child"><div class="avatar">Х</div><div><b>Хадиша, 3 года 4 мес.</b><small>2 специалиста видят профиль</small></div></div>
+ <div class="card"><div class="row"><div class="h">Следующее занятие</div><span class="pill info">завтра</span></div>
+  <div class="t">Пт, 24 октября, 10:00</div><div class="m">Логопед Жазира Апентаева, кабинет 12</div></div>
+ <div class="card"><div class="h">Рекомендация после занятия</div><div class="m">23 октября, логопед</div>
+  <div class="rec">Повторяйте звук «С» в словах «сок», «сам», «нос» 5 минут в день. Играйте в «Кто как говорит» с картинками животных.</div></div>
+ <div class="card"><div class="row"><div class="h">План: развитие речи</div><span class="m">окт – дек</span></div>
+  <div class="t" style="margin-top:4px">2 цели в работе, 1 достигнута</div>
+  <div class="track"><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span></span><span></span></div>
+  <div class="m" style="margin-top:6px">Посещено 6 из 8 занятий</div></div>
+ <div class="card"><div class="row"><div><div class="h">Проверка развития</div><div class="m">Следующая в 3 года 6 мес.</div></div><span class="pill warn">речь: обсудить</span></div></div>
+</div>
+<div class="nav"><div class="on"><i></i>Главная</div><div><i></i>Календарь</div><div><i></i>Специалисты</div><div><i></i>Доступ</div></div></div>
+
+<!-- M2 Screening question -->
+<div class="phone" id="m2-screening"><div class="status"><span>9:41</span><span>LTE 100%</span></div>
+<div class="top"><span class="back">‹</span><h1>Проверка развития</h1></div>
+<div class="content">
+ <div class="m">Речь, вопрос 4 из 9</div>
+ <div class="track" style="margin-top:0"><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span></span><span></span><span></span><span></span><span></span></div>
+ <div class="card" style="margin-top:10px"><div style="height:150px;border-radius:4px;background:#E0EFEF;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:13px">Иллюстрация навыка</div>
+  <div style="font-size:21px;font-weight:700;color:var(--ink);margin-top:16px;line-height:1.3">Ребёнок говорит фразы из трёх и более слов?</div>
+  <div class="m" style="margin-top:8px">Например: «мама дай сок», «папа пошёл гулять».</div></div>
+ <div class="opt">Да</div><div class="opt sel">Пока нет</div><div class="opt">Не уверена</div>
+ <div class="m" style="text-align:center;margin-top:auto;margin-bottom:12px">Вопросы основаны на чек-листах развития CDC для возраста 3 года</div>
+</div></div>
+
+<!-- M3 Screening result -->
+<div class="phone" id="m3-result"><div class="status"><span>9:41</span><span>LTE 100%</span></div>
+<div class="top"><span class="back">‹</span><h1>Результат проверки</h1></div>
+<div class="content">
+ <div class="t">Хадиша, 3 года 4 мес. Пройдено 23 октября.</div>
+ <div class="card">
+  <div class="row"><div class="h" style="margin:0">Речь</div><span class="pill warn">стоит обсудить</span></div>
+  <div class="track"><span class="g"></span><span class="g"></span><span class="g"></span><span class="a"></span><span class="a"></span><span class="a"></span></div>
+  <div class="m" style="margin-top:6px">3 навыка из 6 пока не появились</div></div>
+ <div class="card"><div class="row"><div class="h" style="margin:0">Моторика</div><span class="pill ok">по возрасту</span></div>
+  <div class="track"><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span></div></div>
+ <div class="card"><div class="row"><div class="h" style="margin:0">Общение</div><span class="pill ok">по возрасту</span></div>
+  <div class="track"><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span></div></div>
+ <div class="card"><div class="row"><div class="h" style="margin:0">Самообслуживание</div><span class="pill ok">по возрасту</span></div>
+  <div class="track"><span class="g"></span><span class="g"></span><span class="g"></span><span class="g"></span></div></div>
+ <div class="card" style="background:var(--blush)"><div class="t" style="font-size:13px">Это не диагноз. Результат показывает, какие навыки стоит обсудить со специалистом.</div></div>
+ <div class="btn" style="margin-top:auto">Найти логопеда в Астане</div>
+ <div class="btn2" style="margin-bottom:14px">Сохранить в профиль</div>
+</div></div>
+
+<!-- M4 Search -->
+<div class="phone" id="m4-search"><div class="status"><span>9:41</span><span>LTE 100%</span></div>
+<div class="top"><span class="back">‹</span><h1>Специалисты</h1></div>
+<div class="content">
+ <div class="chips"><span class="chip on">Астана</span><span class="chip on">Логопед</span><span class="chip">Свободно на неделе</span><span class="chip">Дефектолог</span></div>
+ <div class="row"><span class="m">12 проверенных специалистов</span><span class="m" style="color:var(--ink);font-weight:600">Сначала подходящие</span></div>
+ <div class="card"><div class="row"><div class="h" style="margin:0">Жазира Апентаева</div><span class="star">4,9</span></div>
+  <div class="m">Логопед-дефектолог, стаж 9 лет, 41 оценка</div>
+  <div class="row" style="margin-top:10px"><span class="pill ok">Проверен</span><span class="t" style="font-weight:600;color:var(--ink)">Пн, 27 окт, 10:00</span></div></div>
+ <div class="card"><div class="row"><div class="h" style="margin:0">Айгерим Нуркенова</div><span class="star">4,8</span></div>
+  <div class="m">Логопед, стаж 6 лет, 28 оценок</div>
+  <div class="row" style="margin-top:10px"><span class="pill ok">Проверен</span><span class="t" style="font-weight:600;color:var(--ink)">Ср, 29 окт, 15:30</span></div></div>
+ <div class="card"><div class="row"><div class="h" style="margin:0">Мария Ким</div><span class="star">4,6</span></div>
+  <div class="m">Логопед, нейропсихолог, стаж 12 лет, 63 оценки</div>
+  <div class="row" style="margin-top:10px"><span class="pill ok">Проверен</span><span class="t" style="font-weight:600;color:var(--ink)">Пн, 3 ноя, 11:00</span></div></div>
+ <div class="m">Порядок: специализация, рейтинг и ближайшее свободное время</div>
+</div>
+<div class="nav"><div><i></i>Главная</div><div><i></i>Календарь</div><div class="on"><i></i>Специалисты</div><div><i></i>Доступ</div></div></div>
+
+<!-- M5 Specialist profile + request -->
+<div class="phone" id="m5-request"><div class="status"><span>9:41</span><span>LTE 100%</span></div>
+<div class="top"><span class="back">‹</span><h1>Жазира Апентаева</h1></div>
+<div class="content">
+ <div class="card"><div class="m">Логопед-дефектолог, стаж 9 лет, ул. Сыганак 18</div>
+  <div class="row" style="margin-top:10px"><span class="t">Общение с родителями</span><span class="star">4,9</span></div>
+  <div class="row"><span class="t">Результат занятий</span><span class="star">4,8</span></div>
+  <div class="row"><span class="t">Пунктуальность</span><span class="star">5,0</span></div>
+  <div class="m" style="margin-top:6px">41 оценка, только после проведённых занятий</div></div>
+ <div class="h" style="margin:4px 0 0">Свободное время</div>
+ <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px"><div class="slot on">Пн 27, 10:00</div><div class="slot">Пн 27, 16:00</div><div class="slot">Ср 29, 10:00</div></div>
+ <div class="card"><div class="h">Что увидит специалист</div>
+  <div class="check"><div class="box">✓</div><div class="t">Профиль Хадиши: возраст, особенности, заметки</div></div>
+  <div class="check" style="margin-top:8px"><div class="box">✓</div><div class="t">Результат проверки развития от 23 октября</div></div>
+  <div class="check" style="margin-top:8px"><div class="box" style="background:#fff;border:1.5px solid var(--line)"></div><div class="t">Документы (2 файла)</div></div>
+  <div class="m" style="margin-top:10px">Доступ можно отозвать в любой момент в разделе «Доступ».</div></div>
+ <div class="btn" style="margin-top:auto;margin-bottom:14px">Отправить запрос</div>
+</div></div>
+
+<!-- M6 History -->
+<div class="phone" id="m6-history"><div class="status"><span>9:41</span><span>LTE 100%</span></div>
+<div class="top"><h1>Занятия</h1></div>
+<div class="content">
+ <div class="chips"><span class="chip on">Все</span><span class="chip">Логопед</span><span class="chip">Психолог</span></div>
+ <div class="tl">
+  <div class="card"><div class="row"><div class="h" style="margin:0">23 окт, логопед</div><span class="pill ok">проведено</span></div>
+   <div class="m">Звук «С», слоги, артикуляционная гимнастика</div>
+   <div class="rec">Дома: звук «С» в словах «сок», «сам», «нос» 5 минут в день.</div></div>
+  <div class="card"><div class="row"><div class="h" style="margin:0">21 окт, психолог</div><span class="pill ok">проведено</span></div>
+   <div class="m">Игры на внимание и очередность, 40 минут</div></div>
+  <div class="card"><div class="row"><div class="h" style="margin:0">20 окт, логопед</div><span class="pill warn">перенесено</span></div>
+   <div class="m">Причина: болезнь специалиста. Новое время: 23 окт, 10:00</div></div>
+  <div class="card"><div class="row"><div class="h" style="margin:0">16 окт, логопед</div><span class="pill bad">пропущено</span></div>
+   <div class="m">Причина: ребёнок заболел</div></div>
+ </div>
+</div>
+<div class="nav"><div><i></i>Главная</div><div class="on"><i></i>Календарь</div><div><i></i>Специалисты</div><div><i></i>Доступ</div></div></div>
+
+<!-- M7 Access -->
+<div class="phone" id="m7-access"><div class="status"><span>9:41</span><span>LTE 100%</span></div>
+<div class="top"><h1>Кто видит профиль</h1></div>
+<div class="content">
+ <div class="card"><div class="row"><div><div class="h" style="margin:0">Жазира Апентаева</div><div class="m">Логопед, доступ с 27 сентября</div></div><span class="pill ok">активен</span></div>
+  <div class="btn2" style="margin-top:12px;color:#C9566E;border-color:#EBB5C1">Отозвать доступ</div></div>
+ <div class="card"><div class="row"><div><div class="h" style="margin:0">Ерлан Абенов</div><div class="m">Психолог, доступ с 2 октября</div></div><span class="pill ok">активен</span></div>
+  <div class="btn2" style="margin-top:12px;color:#C9566E;border-color:#EBB5C1">Отозвать доступ</div></div>
+ <div class="card"><div class="row"><div><div class="h" style="margin:0">Мария Ким</div><div class="m">Запрос отправлен 20 октября</div></div><span class="pill info">ждёт ответа</span></div></div>
+ <div class="h" style="margin-top:6px">Журнал доступа</div>
+ <div class="card"><div class="t" style="font-size:13px">23 окт, 10:52 — Ж. Апентаева открыла профиль</div>
+  <div class="t" style="font-size:13px;margin-top:6px">21 окт, 16:10 — Е. Абенов добавил запись о занятии</div>
+  <div class="t" style="font-size:13px;margin-top:6px">2 окт, 09:15 — вы дали доступ Е. Абенову</div></div>
+</div>
+<div class="nav"><div><i></i>Главная</div><div><i></i>Календарь</div><div><i></i>Специалисты</div><div class="on"><i></i>Доступ</div></div></div>
+
+<!-- W1 Requests -->
+<div class="desk" id="w1-requests">
+ <div class="side"><div class="logo">Раннее вмешательство<br><span style="font-weight:400;font-size:13px;color:#9DBCBF">кабинет специалиста</span></div>
+  <div class="i on">Запросы <span class="badge">2</span></div><div class="i">Дети</div><div class="i">Календарь</div><div class="i">Отчёты</div><div class="i">Свободное время</div>
+  <div class="me">Жазира Апентаева<br>логопед-дефектолог</div></div>
+ <div class="main"><h1>Новые запросы</h1>
+  <div class="grid2">
+   <div class="card"><div class="row"><div class="h" style="font-size:18px;margin:0">Хадиша, 3 года 4 мес.</div><span class="pill info">получен 23 окт</span></div>
+    <div class="m">Родитель: Ергеш Молдир. Желаемое время: пн, 27 октября, 10:00</div>
+    <div class="h" style="margin-top:16px">Результат проверки развития</div>
+    <table><tr><th>Область</th><th>Результат</th></tr>
+     <tr><td>Речь</td><td><span class="pill warn">3 из 6 навыков пока нет</span></td></tr>
+     <tr><td>Моторика</td><td><span class="pill ok">по возрасту</span></td></tr>
+     <tr><td>Общение</td><td><span class="pill ok">по возрасту</span></td></tr>
+     <tr><td>Самообслуживание</td><td><span class="pill ok">по возрасту</span></td></tr></table>
+    <div class="h" style="margin-top:16px">Заметка родителя</div>
+    <div class="t">Говорит отдельные слова, фразы почти не строит. Занимается с психологом с октября.</div>
+    <div class="row" style="margin-top:18px;justify-content:flex-start;gap:12px"><div class="btn" style="padding:12px 26px">Принять</div><div class="btn2" style="padding:11px 26px">Отклонить</div></div></div>
+   <div class="card"><div class="row"><div class="h" style="font-size:18px;margin:0">Тимур, 4 года 1 мес.</div><span class="pill info">получен 22 окт</span></div>
+    <div class="m">Родитель: Жанна К. Желаемое время: ср, 29 октября, 15:30</div>
+    <div class="t" style="margin-top:14px">Проверка развития не проходилась. Родитель поделился профилем и 1 документом (заключение ПМПК).</div>
+    <div class="row" style="margin-top:18px;justify-content:flex-start;gap:12px"><div class="btn" style="padding:12px 26px">Принять</div><div class="btn2" style="padding:11px 26px">Отклонить</div></div></div>
+  </div>
+  <div class="m">Пока запрос не принят, вы видите только то, чем поделился родитель. После отклонения доступ закрывается.</div>
+ </div></div>
+
+<!-- W2 Child plan -->
+<div class="desk" id="w2-plan">
+ <div class="side"><div class="logo">Раннее вмешательство<br><span style="font-weight:400;font-size:13px;color:#9DBCBF">кабинет специалиста</span></div>
+  <div class="i">Запросы</div><div class="i on">Дети</div><div class="i">Календарь</div><div class="i">Отчёты</div><div class="i">Свободное время</div>
+  <div class="me">Жазира Апентаева<br>логопед-дефектолог</div></div>
+ <div class="main"><div class="row"><h1>Хадиша, 3 года 4 мес.</h1><div class="btn" style="padding:11px 22px">Отметить занятие</div></div>
+  <div class="grid2">
+   <div class="card"><div class="row"><div class="h" style="font-size:17px;margin:0">План: развитие речи</div><span class="pill ok">активный</span></div>
+    <div class="m">1 октября – 20 декабря, 2 занятия в неделю по 40 минут</div>
+    <div class="goal"><span>Произносит звук «С» в словах</span><span class="pill info">в работе</span></div>
+    <div class="goal"><span>Строит фразы из 3 слов</span><span class="pill info">в работе</span></div>
+    <div class="goal" style="border:none"><span>Понимает двухшаговые инструкции</span><span class="pill ok">достигнута</span></div>
+    <div class="btn2" style="margin-top:8px">Изменить план</div></div>
+   <div class="card"><div class="h" style="font-size:17px">Посещаемость плана</div>
+    <div class="row"><span class="big">75%</span><span class="m">6 проведено из 8 запланированных</span></div>
+    <div class="bar" style="margin:10px 0 14px"><i style="width:75%"></i></div>
+    <div class="t">1 пропуск (болезнь ребёнка), 1 перенос</div>
+    <div class="h" style="margin-top:16px">Другие специалисты</div>
+    <div class="t">Ерлан Абенов, психолог: последняя запись 21 октября</div></div>
+  </div>
+  <div class="card"><div class="h" style="font-size:17px">Последние занятия</div>
+   <table><tr><th>Дата</th><th>Статус</th><th>Комментарий</th><th>Рекомендация домой</th></tr>
+    <tr><td>23 окт</td><td><span class="pill ok">проведено</span></td><td>Звук «С» в слогах получается, в словах с подсказкой</td><td>«Сок», «сам», «нос», 5 минут в день</td></tr>
+    <tr><td>20 окт</td><td><span class="pill warn">перенесено</span></td><td>Болезнь специалиста</td><td>—</td></tr>
+    <tr><td>16 окт</td><td><span class="pill bad">пропущено</span></td><td>Ребёнок заболел</td><td>—</td></tr></table></div>
+ </div></div>
+
+<!-- W3 Calendar + mark session -->
+<div class="desk" id="w3-calendar">
+ <div class="side"><div class="logo">Раннее вмешательство<br><span style="font-weight:400;font-size:13px;color:#9DBCBF">кабинет специалиста</span></div>
+  <div class="i">Запросы</div><div class="i">Дети</div><div class="i on">Календарь</div><div class="i">Отчёты</div><div class="i">Свободное время</div>
+  <div class="me">Жазира Апентаева<br>логопед-дефектолог</div></div>
+ <div class="main"><div class="row"><h1>20 – 24 октября</h1><div class="btn2" style="padding:9px 20px;margin-right:400px">Новое занятие</div></div>
+  <div class="cal" style="width:780px">
+   <div class="hd"></div><div class="hd">Пн 20</div><div class="hd">Вт 21</div><div class="hd">Ср 22</div><div class="hd">Чт 23</div><div class="hd">Пт 24</div>
+   <div class="tm">9:00</div><div></div><div><div class="ev p">Тимур<br>консультация</div></div><div></div><div></div><div><div class="ev p">Алихан</div></div>
+   <div class="tm">10:00</div><div><div class="ev x">Хадиша<br>перенесено</div></div><div></div><div><div class="ev d">Нурай</div></div><div><div class="ev d">Хадиша</div></div><div><div class="ev p">Хадиша</div></div>
+   <div class="tm">11:00</div><div><div class="ev d">Мирон</div></div><div></div><div></div><div><div class="ev d">Мирон</div></div><div></div>
+   <div class="tm">15:00</div><div></div><div><div class="ev d">Нурай</div></div><div></div><div></div><div></div>
+   <div class="tm">16:00</div><div></div><div></div><div><div class="ev d">Алихан</div></div><div></div><div></div>
+   <div class="tm">17:00</div><div></div><div></div><div></div><div></div><div></div>
+  </div>
+  <div class="row m" style="width:780px;justify-content:flex-start;gap:18px"><span><span class="pill ok">проведено</span></span><span><span class="pill info">запланировано</span></span><span><span class="pill bad">отменено или перенесено</span></span></div>
+  <div class="modal"><div class="h" style="font-size:18px">Хадиша, чт 23 октября, 10:00</div>
+   <div class="m">План: развитие речи</div>
+   <div class="seg"><div class="on">Проведено</div><div>Пропущено</div><div>Отменено</div></div>
+   <div class="m" style="color:var(--ink);font-weight:600">Что делали</div>
+   <div class="ta">Звук «С» в слогах получается, в словах с подсказкой.</div>
+   <div class="m" style="color:var(--ink);font-weight:600">Рекомендация домой</div>
+   <div class="ta">Повторяйте «сок», «сам», «нос» 5 минут в день.</div>
+   <div class="m">Родитель увидит комментарий и рекомендацию в приложении.</div>
+   <div class="btn">Сохранить</div></div>
+ </div></div>
+</body></html>
