@@ -1,6 +1,5 @@
 # Requirements Specification
 
-## How to read this document
 
 - **FR** — functional requirement (what the system does). **NFR** — non-functional requirement (how well it does it: security, speed, usability).
 - Priorities use MoSCoW: **Must** (required for the final prototype), **Should** (important), **Could** (if time allows), **Won't** (out of scope).
@@ -15,6 +14,7 @@
 | **Parent** | Registers, creates and owns the profile of their child, connects to a specialist and gives them access to the child's data, follows the plan, schedule and progress |
 | **Specialist** | Early intervention specialist (speech therapist, psychologist, physical therapist, etc.). Accepts children, creates individual plans, schedules sessions, records attendance and progress |
 | **Administrator** | Verifies specialists, manages the catalog of session types, monitors the system and views summary reports |
+| **Child** | A user of the system whose account is created, filled in and managed by the parent. The child does not log in; the parent opens the child's account and decides which specialists can see it. Added after the supervisor's feedback (23.10.2026) |
 
 **Key principle:** the child's data belongs to the parent. A specialist sees a child only after the parent has shared access, and the parent can revoke it.
 
@@ -25,7 +25,7 @@
 | ID | Requirement | Priority | Stage | Acceptance criteria |
 |---|---|---|---|---|
 | FR-01 | Parents and specialists register with email and password; all users log in | Must | 2 | Registration creates an account; login with valid data works, invalid data shows an error |
-| FR-02 | The system has three roles: parent, specialist, administrator | Must | 2 | Available pages and actions depend on the role |
+| FR-02 | The system has three account roles (parent, specialist, administrator) and child users managed by parents (FR-37) | Must | 2 | Available pages and actions depend on the role |
 | FR-03 | A specialist account is active only after verification by the administrator | Must | 2 | An unverified specialist cannot accept children; the administrator sees a list of pending specialists |
 | FR-04 | Users can edit their profile; specialists add specialisation and experience | Should | 2 | Changes are saved and shown in the profile |
 
@@ -41,7 +41,7 @@
 
 | ID | Requirement | Priority | Stage | Acceptance criteria |
 |---|---|---|---|---|
-| FR-08 | Parent searches verified specialists by specialisation | Must | 2 | Only verified specialists appear in search results |
+| FR-08 | Parent searches verified specialists (see also FR-33, FR-34) | Must | 2 | Only verified specialists appear in search results |
 | FR-09 | Parent sends a request to a specialist and gives access to the selected child profile | Must | 2 | The specialist receives the request with the child's data |
 | FR-10 | Specialist accepts or rejects the request | Must | 2 | After acceptance the child appears in the specialist's list; after rejection the specialist has no access |
 | FR-11 | Parent can revoke a specialist's access at any time | Must | 2 | After revoking, the specialist cannot open the child's data; the history of held sessions is kept |
@@ -81,9 +81,27 @@
 |---|---|---|---|---|
 | FR-26 | Report on plan execution: planned vs held sessions and attendance rate for a period | Must | 3 | Numbers match the sessions in the database |
 | FR-27 | Administrator sees summary statistics: number of users, active plans, sessions | Should | 3 | Numbers match the database |
-| FR-28 | Reminders to parents and specialists about upcoming sessions | Could | 3 | A notification is shown or sent before the session *(assumption)* |
+| FR-28 | Push reminders to parents about upcoming sessions in the mobile app | Could | 3 | A push notification arrives before the session *(assumption)* |
 | FR-29 | Export of reports to PDF | Could | 3 | The file contains the same data as the screen |
 | FR-30 | Online payment, video sessions, integration with state information systems | Won't | — | Out of scope |
+
+### 2.8 Smart features: screening and specialist search
+
+| ID | Requirement | Priority | Stage | Acceptance criteria |
+|---|---|---|---|---|
+| FR-31 | Parent completes an age-based developmental milestone checklist in the app (based on CDC evidence-informed milestones) | Should | 3 | The checklist matches the child's age; answers are saved in the child profile |
+| FR-32 | The system shows the result by domain (speech, motor, social, self-care) and recommends which type of specialist to consult; it clearly states that it is not a diagnosis | Should | 3 | For a test answer set with missed speech milestones, the result recommends a speech therapist and shows the disclaimer |
+| FR-33 | Parent searches specialists by city and specialisation | Must | 2 | Only verified specialists from the selected city are shown |
+| FR-34 | Search results are ranked by a weighted score: specialisation match, average rating and nearest free time slot | Should | 3 | For test data the order matches the score calculated by hand |
+| FR-35 | After at least one held session, a parent can rate the specialist by several criteria (communication, results, punctuality) and leave a review | Should | 3 | The rating is shown in the specialist profile; a parent without held sessions cannot rate |
+| FR-36 | Specialist sets weekly free time slots | Should | 3 | Free slots are used in search ranking and when sending a request |
+
+### 2.9 Child as a user
+
+| ID | Requirement | Priority | Stage | Acceptance criteria |
+|---|---|---|---|---|
+| FR-37 | Each child is a user of the system. The child's account is created and filled in by the parent (name, date of birth, concerns, documents) and is linked to one or more parents | Must | 2 | A child account cannot exist without a parent; the child appears in the parent's account and in the administrator's list of users with the linked parent |
+| FR-38 | The child does not log in; only the parent opens and edits the child's account and decides which specialists can see it (see FR-09 – FR-11) | Must | 2 | There is no login form for children; a specialist sees the child's account only after the parent has shared it |
 
 ## 3. Non-functional requirements
 
@@ -96,7 +114,7 @@
 | NFR-05 | Security | Secrets are not stored in the repository | Must | Only `.env.example` with placeholders is committed |
 | NFR-06 | Performance | Main pages open in under 2 seconds with demo data (100 children, 15 specialists, 5,000 sessions) | Should | Measured on a local deployment |
 | NFR-07 | Usability | A specialist records a held session in no more than 3 clicks from the calendar | Should | Checked in usability testing |
-| NFR-08 | Usability | Interface works on a phone, tablet and laptop (responsive) | Should | Main scenarios work at 375 px width and above |
+| NFR-08 | Portability | The parent app runs on Android and iOS; the specialist and admin web application works in current browsers on a laptop and tablet | Must | Parent scenarios work on an Android device / emulator and iOS simulator; web scenarios work in Chrome and Safari |
 | NFR-09 | Maintainability | Core business logic is covered by automated tests | Should | Coverage of core modules ≥ 60% |
 | NFR-10 | Portability | The system starts locally with one command (Docker Compose) | Should | README instructions work on a clean machine |
 | NFR-11 | Localisation | Interface in Russian, optionally Kazakh and English | Could | Language can be switched *(assumption)* |
