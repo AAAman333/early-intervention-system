@@ -51,7 +51,7 @@ The prototype uses demonstration data only. Real personal data of children is no
 
 ## Current status
 
-**Stage: analysis and design (pre-defense 1).**
+**Stage: analysis and design completed (pre-defense 1, tag `prob-period-1`).**
 
 The topic and scope are approved by the supervisor. Current work: project proposal, evidence of relevance, literature review, comparison of existing systems and technologies, requirements, architecture diagrams, UI prototype and verification plan.
 
@@ -79,11 +79,11 @@ Selected after comparison of alternatives (see [`docs/05-technology-comparison.m
 ```
 early-intervention-system/
 ├── README.md
-├── docs/            # proposal, literature review, comparisons, requirements, test plan
-│   └── diagrams/    # editable sources (.mmd) and PNG exports
-├── prototype/       # mockups or link to the Figma prototype
-├── src/             # application code (from the implementation stage)
-├── tests/           # automated tests (from the implementation stage)
+└── docs/              # proposal, relevance, literature review, comparisons,
+    │                  # requirements, architecture, test plan, project management
+    ├── diagrams/      # editable sources (.mmd) and PNG exports
+    ├── prototype/     # UI mockups (PNG) and editable HTML source
+    └── survey-results/ # screenshots of the parent survey summary
 ```
 
 ## Workflow
@@ -91,5 +91,4 @@ early-intervention-system/
 - Every work item is a YouTrack task with an ID like `DIP-5`.
 - Branches: `DIP-5-requirements`.
 - Commit messages: `DIP-5: Add functional requirements and acceptance criteria`.
-- Changes are merged into `main` through Pull Requests that reference the YouTrack task.
-- Each pre-defense submission is marked with a tag: `pre-defense-1`, `pre-defense-2`, `final-pre-defense`.
+- Changes are merged into `main` through Pull Requests that reference the YouTrack task
