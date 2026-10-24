@@ -1,11 +1,13 @@
 # Architecture and Diagrams
 
-
 ## 1. Architectural style
 
-Three-tier client-server architecture:
+Client-server architecture with two clients and one backend:
 
-- **Web client** — responsive pages for parents, specialists and administrators. Shows data and sends requests; contains no business rules.
+- **Parent mobile app (Flutter, Android / iOS)** — child profile, search for specialists and requests, access management, calendar, history and recommendations.
+- **Web application (React)** — interface for specialists (children, plans, calendar, attendance) and administrators (verification, catalog, statistics). Specialists work mostly at a computer, so a web interface fits them better.
+
+Both clients only show data and send requests; they contain no business rules, so all logic is written once on the server.
 - **Backend (REST API)** — all business logic: authentication, roles, consent-based access, plans, scheduling, attendance, reports. Every request is checked for the user's role and access rights.
 - **Relational database** — users, children, access grants, plans, sessions, comments. A relational model fits strongly connected data and reports with aggregation.
 
@@ -38,7 +40,7 @@ Source: [`component-diagram.mmd`](diagrams/component-diagram.mmd)
 | Scheduling | Calendar, recurring sessions, overlap check, rescheduling, cancellation |
 | Attendance & Progress | Session status, comments and home recommendations, goal progress |
 | Reports | Planned vs held sessions, attendance rate, admin statistics |
-| Notifications (optional) | Reminders about upcoming sessions |
+| Push notifications (optional) | Reminders to parents about upcoming sessions via Firebase Cloud Messaging |
 
 ## 5. Key scenario: connecting to a specialist
 
@@ -51,7 +53,7 @@ Source: [`sequence-data-sharing.mmd`](diagrams/sequence-data-sharing.mmd)
 | Entity | Main fields |
 |---|---|
 | User | id, name, email, password_hash, role (parent / specialist / admin), verified |
-| Child | id, parent_id, name, birth_date, concerns, notes |
+| Child | id, name, birth_date, concerns, notes; user account linked to one or more parents (ParentChild); no own login |
 | AccessGrant | child_id, specialist_id, status (pending / accepted / rejected / revoked), dates |
 | SessionType | name, duration, specialisation |
 | Plan | child_id, specialist_id, period, status |

@@ -1,10 +1,10 @@
 # UI Prototype: Key User Scenarios
 
-Static mockups of the main screens. The parent screens are designed for the Flutter mobile app, the specialist screens for the React web application. All data is demonstration data; no real children's data is used.
+Static mockups of the main screens. The parent screens are designed for the Flutter mobile app, the specialist screens for the React web application. 
 
-Files are in [`prototype/`](prototype/): a PNG image of every screen, two overview images and the editable source `mockups-source.html`.
+Files are in [`prototype/`](prototype/): a PNG image of every screen, two overview images and the editable source `mockups-source.html` .
 
-**Visual direction :** calm teal as the main colour (#3A8F8D for buttons, #7FBFBE for decorative elements), soft pink accent (#E5738A) for things that need attention and for home recommendations, very light teal background (#EEF6F6), periwinkle (#CBD7E8) for neutral information, dark slate text (#21414B). Small corner radius (4–6 px).
+**Visual direction:** calm teal as the main colour (#3A8F8D for buttons, #7FBFBE for decorative elements), soft pink accent (#E5738A) for things that need attention and for home recommendations, very light teal background (#EEF6F6), periwinkle (#CBD7E8) for neutral information, dark slate text (#21414B)
 
 ## Overview
 
@@ -54,5 +54,5 @@ Files are in [`prototype/`](prototype/): a PNG image of every screen, two overvi
 ## Limitations
 
 - These are static mockups, not a working prototype; navigation between screens is shown by scenario order.
-- Administrator screens (specialist verification, catalogue) are not drawn yet; they will be added at the next stage.
+- Administrator screens (specialist verification, catalogue, list of users including children with their parents) are not drawn yet; they will be added at the next stage.
 - The mockups will be checked with 3–5 users during the usability test (see `08-verification-plan.md`).

@@ -13,6 +13,8 @@ Early intervention programs are planned individually for each child: goals, type
 - **Administrators** — verify specialists, manage the catalog of session types, monitor the system.
 - **Children** — users of the system; the account is created, filled in and opened by the parent.
 
+The prototype uses demonstration data only. Real personal data of children is not collected or stored.
+
 ## Aim and expected outcomes
 
 **Aim:** to develop a working prototype of an information system for structured planning and tracking of individual early intervention programs.
@@ -51,7 +53,7 @@ Early intervention programs are planned individually for each child: goals, type
 
 **Stage: analysis and design completed (pre-defense 1, tag `prob-period-1`).**
 
-Done: project proposal and scope; evidence of relevance (statistics, survey of 13 parents, 3 interviews); literature review (17 sources); comparison of 4 existing systems; technology comparison; requirements with acceptance criteria; architecture with context, use case, component and sequence diagrams; UI mockups of key scenarios; verification and evaluation plan; risks, milestones and supervisor feedback. No runnable code yet; implementation starts at stage 2.
+The topic and scope are approved by the supervisor. Current work: project proposal, evidence of relevance, literature review, comparison of existing systems and technologies, requirements, architecture diagrams, UI prototype and verification plan.
 
 ## Technologies
 
@@ -70,7 +72,7 @@ Selected after comparison of alternatives (see [`docs/05-technology-comparison.m
 - **YouTrack project:** https://moldir-diploma.youtrack.cloud/projects/DIP
 - **Documentation:** [`docs/`](docs/)
 - **Diagrams:** [`docs/diagrams/`](docs/diagrams/)
-- **Prototype:** [`docs/10-ui-prototype.md`](docs/10-ui-prototype.md)
+- **Prototype:** [`prototype/`](prototype/)
 
 ## Repository structure
 

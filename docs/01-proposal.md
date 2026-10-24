@@ -31,12 +31,13 @@ To work effectively, specialists need to see the whole program of a child, know 
 | Parent | Keep the child's data in one place, connect to specialists and share data with them, see the plan, schedule, attendance, comments and progress |
 | Early intervention specialist | Receive the child's data from parents, create and run individual plans, see the schedule, record sessions, attendance and comments |
 | Administrator | Verify specialists, manage the catalog of session types, monitor the system |
+| Child | User of the system whose account is created, filled in and opened by the parent; the child does not log in |
 
 The child's profile belongs to the parent: a specialist gets access only after the parent shares it, and the parent can revoke access at any time.
 
 ## Aim
 
-To develop a working prototype of a web-based information system for structured planning, scheduling and tracking of individual early intervention programs.
+To develop a working prototype of an information system — a mobile app for parents and a web application for specialists and administrators — for structured planning, scheduling and tracking of individual early intervention programs.
 
 ## Objectives
 
@@ -50,7 +51,7 @@ To develop a working prototype of a web-based information system for structured 
 
 ## Expected outcomes
 
-- A working web prototype with role-based access for parents, specialists and administrators.
+- A working prototype with role-based access: a Flutter mobile app for parents and a React web application for specialists and administrators, sharing one backend.
 - Verifiable end-to-end scenario: **parent creates a child profile → shares it with a specialist → specialist creates a plan and schedules sessions → records attendance and comments → parent sees progress and the report**.
 - Project documentation: requirements, architecture, diagrams, test plan and results.
 - Demonstration data set (no real personal data).
@@ -58,7 +59,7 @@ To develop a working prototype of a web-based information system for structured 
 ## Project scope
 
 **In scope:**
-- registration, authentication and three roles (parent, specialist, administrator);
+- registration and authentication for parents, specialists and administrators; child profiles as users managed by parents;
 - child profiles owned by parents;
 - requests to specialists and consent-based data sharing with revoke;
 - catalog of session types;
@@ -71,7 +72,7 @@ To develop a working prototype of a web-based information system for structured 
 **Out of scope:**
 - processing real personal or medical data of children;
 - integration with state medical information systems;
-- native mobile applications (the web interface is responsive);
+- a mobile app for specialists (they use the web application);
 - online payments and video sessions.
 
 ## Engineering complexity
@@ -79,11 +80,11 @@ To develop a working prototype of a web-based information system for structured 
 The project is a full software system, not a static website. Its complexity comes from:
 
 - **Data model:** related entities (users, roles, children, access grants, programs, goals, session types, plans, sessions, attendance, comments, reports) with integrity constraints.
-- **Consent-based access control:** three roles; a specialist sees a child only after the parent's request is accepted, and loses access when the parent revokes it.
+- **Consent-based access control:** three account roles plus children managed by parents; a specialist sees a child only after the parent's request is accepted, and loses access when the parent revokes it.
 - **Scheduling logic:** recurring sessions, time conflicts between specialists, rescheduling and cancellations.
 - **Execution tracking:** comparison of planned and actually held sessions, calculation of attendance and execution rates.
 - **Reporting:** aggregation of data by child, specialist and period.
-- **Client-server architecture:** web client, REST API and relational database, with automated tests.
+- **Multi-client architecture:** two clients (Flutter mobile app and React web application) using one REST API and a relational database, with automated tests.
 - **Data protection:** the system is designed for sensitive data, so security requirements are considered even though the prototype uses only test data.
 
 ## Key risks (initial)
