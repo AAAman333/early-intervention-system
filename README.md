@@ -1,6 +1,6 @@
 # Development of a Digital System for Managing Early Intervention Programs
 
-A web-based information system that helps early intervention centres plan, schedule and track individual intervention programs for children: program goals, session types and intensity, calendar, attendance, execution history and reports.
+An information system — a mobile app for parents and a web application for specialists — that helps early intervention centres plan, schedule and track individual intervention programs for children: program goals, session types and intensity, calendar, attendance, execution history and reports.
 
 ## Problem statement
 
@@ -11,20 +11,21 @@ Early intervention programs are planned individually for each child: goals, type
 - **Parents** — create and own the child's profile, connect to specialists and share data with them, follow the plan, schedule and progress.
 - **Early intervention specialists** (psychologists, speech therapists, physical therapists, etc.) — create individual plans, schedule sessions, record attendance and comments.
 - **Administrators** — verify specialists, manage the catalog of session types, monitor the system.
+- **Children** — users of the system; the account is created, filled in and opened by the parent.
 
 ## Aim and expected outcomes
 
 **Aim:** to develop a working prototype of an information system for structured planning and tracking of individual early intervention programs.
 
 **Expected outcomes:**
-- a working web prototype with role-based access;
+- a working prototype: Flutter mobile app for parents and web application for specialists and administrators, with role-based access;
 - verifiable scenarios: parent shares child profile → specialist creates a plan and schedules sessions → attendance and comments are recorded → parent sees progress and the report;
 - project documentation (requirements, architecture, test plan) and demonstration data.
 
 ## Project scope
 
 **In scope:**
-- three roles: parent, specialist, administrator;
+- four user types: parent, child (managed by the parent), specialist, administrator;
 - child profiles owned by parents and consent-based data sharing with specialists;
 - catalog of session types;
 - individual intervention plans;
@@ -36,7 +37,7 @@ Early intervention programs are planned individually for each child: goals, type
 **Out of scope:**
 - processing of real personal or medical data of children;
 - integration with state medical information systems;
-- native mobile applications (the web interface is responsive);
+- a mobile app for specialists (they use the web application);
 - online payments and video sessions.
 
 ## Team and supervisor
@@ -48,33 +49,39 @@ Early intervention programs are planned individually for each child: goals, type
 
 ## Current status
 
-**Stage: analysis and design (pre-defense 1).**
+**Stage: analysis and design completed (pre-defense 1, tag `prob-period-1`).**
 
-The topic and scope are approved by the supervisor. Current work: project proposal, evidence of relevance, literature review, comparison of existing systems and technologies, requirements, architecture diagrams, UI prototype and verification plan. No runnable code yet.
+Done: project proposal and scope; evidence of relevance (statistics, survey of 13 parents, 3 interviews); literature review (17 sources); comparison of 4 existing systems; technology comparison; requirements with acceptance criteria; architecture with context, use case, component and sequence diagrams; UI mockups of key scenarios; verification and evaluation plan; risks, milestones and supervisor feedback. No runnable code yet; implementation starts at stage 2.
 
 ## Technologies
 
-The final technology stack will be selected based on the technology comparison (see [`docs/`](docs/)). Planned components:
-- web client (frontend);
-- server-side REST API (backend);
-- relational database;
-- Git + GitHub for version control, YouTrack for task tracking.
+Selected after comparison of alternatives (see [`docs/05-technology-comparison.md`](docs/05-technology-comparison.md)):
+
+- **Parent client:** Flutter mobile app (Android, iOS)
+- **Specialist and admin client:** React web application
+- **Backend:** Node.js + Express, REST API
+- **Database:** PostgreSQL + Prisma
+- **Authentication:** JWT in httpOnly cookie, bcrypt
+- **Testing:** Jest, Supertest
+- **Tools:** Docker Compose, GitHub, YouTrack, Figma
 
 ## Links
 
 - **YouTrack project:** https://moldir-diploma.youtrack.cloud/projects/DIP
+- **Documentation:** [`docs/`](docs/)
+- **Diagrams:** [`docs/diagrams/`](docs/diagrams/)
+- **Prototype:** [`docs/10-ui-prototype.md`](docs/10-ui-prototype.md)
 
 ## Repository structure
 
 ```
 early-intervention-system/
 ├── README.md
-├── docs/            # proposal, literature review, comparisons, requirements, test plan
-├── diagrams/        # editable sources (.drawio) and exports (.png)
-├── prototype/       # mockups or link to the Figma prototype
-├── src/             # application code (from the implementation stage)
-├── tests/           # automated tests (from the implementation stage)
-└── .gitignore
+└── docs/              # proposal, relevance, literature review, comparisons,
+    │                  # requirements, architecture, test plan, project management
+    ├── diagrams/      # editable sources (.mmd) and PNG exports
+    ├── prototype/     # UI mockups (PNG) and editable HTML source
+    └── survey-results/ # screenshots of the parent survey summary
 ```
 
 ## Workflow
@@ -82,9 +89,4 @@ early-intervention-system/
 - Every work item is a YouTrack task with an ID like `DIP-5`.
 - Branches: `DIP-5-requirements`.
 - Commit messages: `DIP-5: Add functional requirements and acceptance criteria`.
-- Changes are merged into `main` through Pull Requests that reference the YouTrack task.
-- Each pre-defense submission is marked with a tag: `pre-defense-1`, `pre-defense-2`, `final-pre-defense`.
-
-## Setup and run
-
-Not available yet. Setup, run and test instructions will be added when runnable code appears.
+- Changes are merged into `main` through Pull Requests that reference the YouTrack task
