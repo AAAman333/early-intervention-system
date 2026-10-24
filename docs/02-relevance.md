@@ -1,5 +1,4 @@
 # Evidence of Relevance
-
 ## 1. Statistical data
 
 | Fact | Source | Status |
@@ -20,24 +19,25 @@ International sources for comparison (Eurostat, Statistics Denmark, U.S. NLM dat
 | Method | Participants | Goal | Status |
 |---|---|---|---|
 | Online survey for parents (main method) | 13 parents (Google Forms, 20–23.10.2026) | How parents get information about the program, schedule and progress; attitude to data sharing; questions in `02-survey.md` | Done (13 answers), still open |
-| Short conversations | 3–5 parents | Deeper understanding of problems and needs | Planned before 24.10.2026 |
-| Conversations with specialists | 1–2 specialists (if available) | Check how plans and attendance are kept (H1, H4); guide in `02-interview-guide.md` | Planned, optional |
+| Short conversations (interviews) | 3 parents (2 mothers, 1 father) | Deeper understanding of problems and needs; guide in `02-interview-guide.md` | Done, 23–24.10.2026 |
+| Conversations with specialists | 1–2 specialists | Check how plans and attendance are kept (H1, H4) | Planned for the next stage |
 | Consultation with supervisor | Basheyeva Zh.O. | Confirm scope, roles and key functions | 23.10.2026 |
 
-## 3. Hypotheses and their status after the survey
+## 3. Hypotheses and their status after the survey and interviews
 
 | ID | Hypothesis | Related requirements | Status |
 |---|---|---|---|
 | H1 | Specialists keep plans and attendance in paper journals, Excel or messengers, not in a dedicated system | Whole project | Partly confirmed (indirectly: 62% of parents get the schedule through messengers, only 1 of 13 through a centre app). Must be checked with specialists |
-| H2 | Parents do not have one place where they can see the child's plan, schedule and progress | FR-21, FR-23, FR-25 | Confirmed: only 38% have such a place; 62% have it partly or not at all |
-| H3 | When a child moves to a new specialist, the parent has to repeat the child's history and bring documents again | FR-05, FR-09 | Confirmed: 9 of 10 parents who changed specialists had to do it every time or sometimes |
+| H2 | Parents do not have one place where they can see the child's plan, schedule and progress | FR-21, FR-23, FR-25 | Confirmed by survey (only 38% have such a place) and by all 3 interviews (schedule in WhatsApp, recommendations forgotten, progress over months hard to see) |
+| H3 | When a child moves to a new specialist, the parent has to repeat the child's history and bring documents again | FR-05, FR-09 | Confirmed by survey (9 of 10) and by 2 of 3 interviews |
 | H4 | Preparing reports on held sessions takes specialists significant time | FR-26 | Not checked yet (specialists' side) |
-| H5 | Parents want to control who sees the child's data | FR-09, FR-11, NFR-03 | Mostly confirmed: 7 of 13 chose the maximum importance (5 of 5), 4 chose 3, 2 chose 2. For some parents this is less important, so access control must be simple and not slow down the work |
+| H5 | Parents want to control who sees the child's data | FR-09, FR-11, NFR-03 | Confirmed by all 3 interviews; in the survey mostly confirmed: 7 of 13 chose the maximum importance (5 of 5), 4 chose 3, 2 chose 2. For some parents this is less important, so access control must be simple and not slow down the work |
 | H6 | Parents prefer a phone to a computer | Technology decision 1 (Flutter app for parents) | Confirmed: 92% (12 of 13) prefer a phone |
 
 ## 4. Survey results
 
 **Sample:** 13 parents, Google Forms, 20–23 October 2026, distributed through the author's personal network (friends, relatives and their acquaintances).
+
 
 | Question | Result |
 |---|---|
@@ -72,6 +72,56 @@ International sources for comparison (Eurostat, Statistics Denmark, U.S. NLM dat
 - The specialists' side (H1, H4) is not covered by the survey.
 - The survey is still open; the results will be updated.
 
-## 5. Conversations
+## 5. Interviews
 
-Planned: short conversations (about 10 minutes) with 3–5 parents, and if possible with 1–2 specialists, using the guide in `02-interview-guide.md`. **Not conducted yet**; planned before 24.10.2026. Results will be added as one short table per conversation.
+Three short interviews with parents were conducted on 23–24.10.2026 using `02-interview-guide.md` (one written answer to the questions, two conversations recorded as audio with permission and summarised by the author). Names are not published.
+
+### Interview 1: mother, child 4 years
+
+| Topic | Summary |
+|---|---|
+| Specialists | Development centre: speech therapist and special educator, 2–3 sessions a week |
+| Schedule | The administrator writes in WhatsApp; old messages are hard to find; once she missed a message about a changed time |
+| After sessions | The specialist explains what was done and what to practise at home, but she sometimes forgets what exactly to do or how; wants recommendations saved in the app |
+| New specialist | Had to explain the situation and previous results again; "not critical, but takes time"; would like the history to be available to a new specialist with her permission |
+| Choosing a specialist | Recommendation from another mother; important: experience, attitude to the child, visible progress, location and schedule compatible with work |
+| Most useful | Schedule and reminders first, then recommendations and progress |
+| Barrier | If the app is complicated or requires entering a lot of information, she would not use it often |
+| Data access | Parents must decide; access only for the specialists who need it, not for all staff of the centre |
+| Hypotheses | Confirms H2, H3, H5 |
+
+### Interview 2: father
+
+| Topic | Summary |
+|---|---|
+| Schedule | Learns it from his wife, who communicates with the centre; often does not know when the next session is, especially after changes |
+| After sessions | Does not always attend, so he misses the specialist's explanations; would like **both parents** to see recommendations |
+| Choosing a specialist | Recommendations of acquaintances and location |
+| Most useful | Schedule and reminders; the app should not be overloaded with functions |
+| Data access | Parents should decide who sees the child's information |
+| Hypotheses | Confirms H2, H5; new need: access for both parents |
+
+### Interview 3: mother
+
+| Topic | Summary |
+|---|---|
+| Schedule | Everything comes in WhatsApp; convenient in general, but with several specialists the information gets mixed up |
+| After sessions | She is told what was done, but it is hard to see overall progress over several months; wants to see which skills are mastered and what still needs work |
+| New specialist | Had to tell about previous experience and results again |
+| Most useful | Session history, home recommendations, schedule, progress reports |
+| Data access | Would allow access to specialists who work with the child, but wants to confirm access herself |
+| Hypotheses | Confirms H2, H3, H5 |
+
+### Findings from the interviews and their effect on the project
+
+| Finding | Interviews | Effect on requirements |
+|---|---|---|
+| Schedule in messengers gets lost or mixed up, especially with several specialists and after changes | 1, 2, 3 | Confirms the shared calendar (FR-21) and visible changes with reasons (FR-20). **Reminders (FR-28) raised from Could to Should** |
+| Parents forget home recommendations and want them saved | 1, 2, 3 | Confirms FR-23, FR-25 |
+| Progress over months is hard to see; parents want to know which skills are mastered | 3 | Confirms goal progress (FR-24) and progress by developmental area |
+| Both parents need access to the same child | 2 | Confirms that a child account can be linked to more than one parent (FR-37) |
+| Repeating the history to a new specialist takes time | 1, 3 | Confirms the parent-owned child profile shared with consent (FR-05, FR-09) |
+| Parents want to confirm access themselves and limit it to the specialists who need it | 1, 2, 3 | Confirms FR-09 – FR-12 and choosing what to share (mockup m5) |
+| The app must be simple and not require entering a lot of data | 1, 2 | Confirms NFR-07 (few clicks); most data is entered by specialists, not parents |
+
+**Limitations:** three interviews with parents from the author's network; specialists have not been interviewed yet (planned for the next stage).
